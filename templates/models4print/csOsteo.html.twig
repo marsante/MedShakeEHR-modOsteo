@@ -1,0 +1,128 @@
+{#
+ # This file is part of MedShakeEHR.
+ #
+ # Copyright (c) 2017
+ # fr33z00 <https://github.com/fr33z00>
+ # http://www.medshake.net
+ #
+ # MedShakeEHR is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # any later version.
+ #
+ # MedShakeEHR is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with MedShakeEHR.  If not, see <http://www.gnu.org/licenses/>.
+ #/
+
+/##
+ # Template > models4print : compte-rendu de consultation
+ #
+ # @author Michaël Val
+ # @contrib fr33z00 <https://github.com/fr33z00>
+  # @contrib Bertrand Boutillier <b.boutillier@gmail.com>
+ #}
+
+{% set tag = page.courrier %}
+
+<p style="text-align : right;">Paris, le {{ tag.date|date("d/m/Y") }}</p>
+
+<h2 style="text-align : center">{{ tag.identiteCompleteTitreLongDdn  }}</h2>
+<h2>Consultation du jour</h2>
+{% if tag.examenDuJour != '' %}
+  <h3>Diagnostic et traitement</h3>
+  <p>{{ tag.examenDuJour }}</p>
+{% endif %}
+
+{% if tag.osteoAnamnese != '' %}
+  <h3>Anamnèse</h3>
+  <p>{{ tag.osteoAnamnese }}</p>
+{% endif %}
+
+{% if tag.osteoTests != '' %}
+  <h3>Tests</h3>
+  <p>{{ tag.osteoEvolSym }}</p>
+{% endif %}
+
+
+{% set zones_v1={'osteoC0L': 'C0 Gch', 'osteoC0R': 'C0 Drt', 'osteoC1L': 'C1 Gch', 'osteoC1R': 'C1 Drt', 'osteoC2L': 'C2 Gch', 'osteoC2R': 'C2 Drt', 'osteoC3L': 'C3 Gch', 'osteoC3R': 'C3 Drt', 'osteoC4L': 'C4 Gch', 'osteoC4R': 'C4 Drt', 'osteoC5L': 'C5 Gch', 'osteoC5R': 'C5 Drt', 'osteoC6L': 'C6 Gch', 'osteoC6R': 'C6 Drt', 'osteoC7L': 'C7 Gch', 'osteoC7R': 'C7 Drt', 'osteoT1L': 'T1 Gch', 'osteoT1R': 'T1 Drt', 'osteoT2L': 'T2 Gch', 'osteoT2R': 'T2 Drt', 'osteoT3L': 'T3 Gch', 'osteoT3R': 'T3 Drt', 'osteoT4L': 'T4 Gch', 'osteoT4R': 'T4 Drt', 'osteoT5L': 'T5 Gch', 'osteoT5R': 'T5 Drt', 'osteoT6L': 'T6 Gch', 'osteoT6R': 'T6 Drt', 'osteoT7L': 'T7 Gch', 'osteoT7R': 'T7 Drt', 'osteoT8L': 'T8 Gch', 'osteoT8R': 'T8 Drt', 'osteoT9L': 'T9 Gch', 'osteoT9R': 'T9 Drt', 'osteoT10L': 'T10 Gch', 'osteoT10R': 'T10 Drt', 'osteoT11L': 'T11 Gch', 'osteoT11R': 'T11 Drt', 'osteoT12L': 'T12 Gch', 'osteoT12R': 'T12 Drt', 'osteoL1L': 'L1 Gch', 'osteoL1R': 'L1 Drt', 'osteoL2L': 'L2 Gch', 'osteoL2R': 'L2 Drt', 'osteoL3L': 'L3 Gch', 'osteoL3R': 'L3 Drt', 'osteoL4L': 'L4 Gch', 'osteoL4R': 'L4 Drt', 'osteoL5L': 'L5 Gch', 'osteoL5R': 'L5 Drt', 'osteoPIL': 'PI Gch', 'osteoPIR': 'PI Drt', 'osteoPI_L': 'PI/ Gch', 'osteoPI_R': 'PI/ Drt', 'osteoASL': 'AS Gch', 'osteoASR': 'AS Drt', 'osteoAS_L': 'AS/ Gch', 'osteoAS_R': 'AS/ Drt', 'osteoSacralAnt': 'Sacral Ant', 'osteoSacralPost': 'Sacral Post', 'osteoCoccyxAnt': 'Coccyx Ant', 'osteoCoccyxPost': 'Coccyx Post'} %}
+
+{% set zones_v2={'osteoC0': 'C0', 'osteoC1': 'C1', 'osteoC2': 'C2', 'osteoC3': 'C3', 'osteoC4': 'C4', 'osteoC5': 'C5', 'osteoC6': 'C6', 'osteoC7': 'C7', 'osteoCoccyx': 'Coccyx', 'osteoK1_Lt': 'K1 Gch', 'osteoK1_Rt': 'K1 Drt', 'osteoK10_Lt': 'K10 Gch', 'osteoK10_Rt': 'K10 Drt', 'osteoK11_Lt': 'K11 Gch', 'osteoK11_Rt': 'K11 Drt', 'osteoK12_Lt': 'K12 Gch', 'osteoK12_Rt': 'K12 Drt', 'osteoK2_Lt': 'K2 Gch', 'osteoK2_Rt': 'K2 Drt', 'osteoK3_Lt': 'K3 Gch', 'osteoK3_Rt': 'K3 Drt', 'osteoK4_Lt': 'K4 Gch', 'osteoK4_Rt': 'K4 Drt', 'osteoK5_Lt': 'K5 Gch', 'osteoK5_Rt': 'K5 Drt', 'osteoK6_Lt': 'K6 Gch', 'osteoK6_Rt': 'K6 Drt', 'osteoK7_Lt': 'K7 Gch', 'osteoK7_Rt': 'K7 Drt', 'osteoK8_Lt': 'K8 Gch', 'osteoK8_Rt': 'K8 Drt', 'osteoK9_Lt': 'K9 Gch', 'osteoK9_Rt': 'K9 Drt', 'osteoL1': 'L1', 'osteoL2': 'L2', 'osteoL3': 'L3', 'osteoL4': 'L4', 'osteoL5': 'L5', 'osteoIlium_Lt': 'Ilium Gch', 'osteoIlium_Rt': 'Ilium Drt', 'osteoIlium_Lt': 'Ilium Gch', 'osteoIlium_Rt': 'Ilium Drt', 'osteoPatella_Lt': 'Patella Gch', 'osteoPatella_Rt': 'Patella Drt', 'osteoSacrum': 'Sacrum', 'osteoScapula_Lt': 'Scapula Gch', 'osteoScapula_Rt': 'Scapula Drt', 'osteoT1': 'T1', 'osteoT10': 'T10', 'osteoT11': 'T11', 'osteoT12': 'T12', 'osteoT2': 'T2', 'osteoT3': 'T3', 'osteoT4': 'T4', 'osteoT5': 'T5', 'osteoT6': 'T6', 'osteoT7': 'T7', 'osteoT8': 'T8', 'osteoT9': 'T9', 'osteoTalus_Lt': 'Talus Gch', 'osteoTalus_Rt': 'Talus Drt', 'osteoTibia_Lt': 'Tibia Gch', 'osteoTibia_Rt': 'Tibia Drt'} %}
+
+{% set mains={'osteoCapitatum_Lt': 'Capitatum Gch', 'osteoCapitatum_Rt': 'Capitatum Drt', 'osteoHamatum_Lt': 'Hamatum Gch', 'osteoHamatum_Rt': 'Hamatum Drt', 'osteoLunatum_Lt': 'Lunatum Gch', 'osteoLunatum_Rt': 'Lunatum Drt', 'osteoMetacarpe_I_Lt': 'Métacarpe I Gch', 'osteoMetacarpe_I_Rt': 'Métacarpe I Drt', 'osteoMetacarpe_II_Lt': 'Métacarpe II Gch', 'osteoMetacarpe_II_Rt': 'Métacarpe II Drt', 'osteoMetacarpe_III_Lt': 'Métacarpe III Gch', 'osteoMetacarpe_III_Rt': 'Métacarpe III Drt', 'osteoMetacarpe_IV_Lt': 'Métacarpe IV Gch', 'osteoMetacarpe_IV_Rt': 'Métacarpe IV Drt', 'osteoMetacarpe_V_Lt': 'Métacarpe V Gch', 'osteoMetacarpe_V_Rt': 'Métacarpe V Drt', 'osteoP1_I_Lt': 'P1 I Gch', 'osteoP1_I_Rt': 'P1 I Drt', 'osteoP1_II_Lt': 'P1 II Gch', 'osteoP1_II_Rt': 'P1 II Drt', 'osteoP1_III_Lt': 'P1 III Gch', 'osteoP1_III_Rt': 'P1 III Drt',  'osteoCapitatum_Lt': 'Capitatum Gch', 'osteoCapitatum_Rt': 'Capitatum Drt', 'osteoHamatum_Lt': 'Hamatum Gch', 'osteoHamatum_Rt': 'Hamatum Drt', 'osteoLunatum_Lt': 'Lunatum Gch', 'osteoLunatum_Rt': 'Lunatum Drt', 'osteoMetacarpe_I_Lt': 'Métacarpe I Gch', 'osteoMetacarpe_I_Rt': 'Métacarpe I Drt', 'osteoMetacarpe_II_Lt': 'Métacarpe II Gch', 'osteoMetacarpe_II_Rt': 'Métacarpe II Drt', 'osteoMetacarpe_III_Lt': 'Métacarpe III Gch', 'osteoMetacarpe_III_Rt': 'Métacarpe III Drt', 'osteoMetacarpe_IV_Lt': 'Métacarpe IV Gch', 'osteoMetacarpe_IV_Rt': 'Métacarpe IV Drt', 'osteoMetacarpe_V_Lt': 'Métacarpe V Gch', 'osteoMetacarpe_V_Rt': 'Métacarpe V Drt', 'osteoP1_I_Lt': 'P1 I Gch', 'osteoP1_I_Rt': 'P1 I Drt', 'osteoP1_II_Lt': 'P1 II Gch', 'osteoP1_II_Rt': 'P1 II Drt', 'osteoP1_III_Lt': 'P1 III Gch', 'osteoP1_III_Rt': 'P1 III Drt', 'osteoP1_IV_Lt': 'P1 IV Gch', 'osteoP1_IV_Rt': 'P1 IV Drt', 'osteoP1_V_Lt': 'P1 V Gch', 'osteoP1_V_Rt': 'P1 V Drt', 'osteoP2_I_Lt': 'P2 I Gch', 'osteoP2_I_Rt': 'P2 I Drt', 'osteoP2_II_Lt': 'P2 II Gch', 'osteoP2_II_Rt': 'P2 II Drt', 'osteoP2_III_Lt': 'P2 III Gch', 'osteoP2_III_Rt': 'P2 III Drt', 'osteoP2_IV_Lt': 'P2 IV Gch', 'osteoP2_IV_Rt': 'P2 IV Drt', 'osteoP2_V_Lt': 'P2 V Gch', 'osteoP2_V_Rt': 'P2 V Drt', 'osteoP3_I_Lt': 'P3 I Gch', 'osteoP3_I_Rt': 'P3 I Drt', 'osteoP3_II_Lt': 'P3 II Gch', 'osteoP3_II_Rt': 'P3 II Drt', 'osteoP3_III_Lt': 'P3 III Gch', 'osteoP3_III_Rt': 'P3 III Drt', 'osteoP3_IV_Lt': 'P3 IV Gch', 'osteoP3_IV_Rt': 'P3 IV Drt', 'osteoP3_V_Lt': 'P3 V Gch', 'osteoP3_V_Rt': 'P3 V Drt', 'osteoPisiforme_Lt': 'Pisiforme Gch', 'osteoPisiforme_Rt': 'Pisiforme Drt', 'osteoScaphoide_Lt': 'Scaphoïde Gch', 'osteoScaphoide_Rt': 'Scaphoïde Drt', 'osteoTrapezium_Lt': 'Trapezium Gch', 'osteoTrapezium_Rt': 'Trapezium Drt', 'osteoTrapezoide_Lt': 'Trapézoïde Gch', 'osteoTrapezoide_Rt': 'Trapézoïde Drt', 'osteoTriquetrum_Lt': 'Triquetrum Gch', 'osteoTriquetrum_Rt': 'Triquetrum Drt', 'osteoP1_IV_Lt': 'P1 IV Gch', 'osteoP1_IV_Rt': 'P1 IV Drt', 'osteoP1_V_Lt': 'P1 V Gch', 'osteoP1_V_Rt': 'P1 V Drt', 'osteoP2_I_Lt': 'P2 I Gch', 'osteoP2_I_Rt': 'P2 I Drt', 'osteoP2_II_Lt': 'P2 II Gch', 'osteoP2_II_Rt': 'P2 II Drt', 'osteoP2_III_Lt': 'P2 III Gch', 'osteoP2_III_Rt': 'P2 III Drt', 'osteoP2_IV_Lt': 'P2 IV Gch', 'osteoP2_IV_Rt': 'P2 IV Drt', 'osteoP2_V_Lt': 'P2 V Gch', 'osteoP2_V_Rt': 'P2 V Drt', 'osteoP3_II_Lt': 'P3 II Gch', 'osteoP3_II_Rt': 'P3 II Drt', 'osteoP3_III_Lt': 'P3 III Gch', 'osteoP3_III_Rt': 'P3 III Drt', 'osteoP3_IV_Lt': 'P3 IV Gch', 'osteoP3_IV_Rt': 'P3 IV Drt', 'osteoP3_V_Lt': 'P3 V Gch', 'osteoP3_V_Rt': 'P3 V Drt', 'osteoPisiforme_Lt': 'Pisiforme Gch', 'osteoPisiforme_Rt': 'Pisiforme Drt', 'osteoScaphoide_Lt': 'Scaphoïde Gch', 'osteoScaphoide_Rt': 'Scaphoïde Drt', 'osteoTrapezium_Lt': 'Trapezium Gch', 'osteoTrapezium_Rt': 'Trapezium Drt', 'osteoTrapezoide_Lt': 'Trapézoïde Gch', 'osteoTrapezoide_Rt': 'Trapézoïde Drt', 'osteoTriquetrum_Lt': 'Triquetrum Gch', 'osteoTriquetrum_Rt': 'Triquetrum Drt'} %}
+
+{% set pieds={'osteo_p1_I_Lt': 'p1 I Gch', 'osteo_p1_I_Rt': 'p1 I Drt', 'osteo_p1_II_Lt': 'p1 II Gch', 'osteo_p1_II_Rt': 'p1 II Drt', 'osteo_p1_III_Lt': 'p1 III Gch', 'osteo_p1_III_Rt': 'p1 III Drt', 'osteo_p1_IV_Lt': 'p1 IV Gch', 'osteo_p1_IV_Rt': 'p1 IV Drt', 'osteo_p1_V_Lt': 'p1 V Gch', 'osteo_p1_V_Rt': 'p1 V Drt', 'osteo_p2_I_Lt': 'p2 I Gch', 'osteo_p2_I_Rt': 'p2 I Drt', 'osteo_p2_II_Lt': 'p2 II Gch', 'osteo_p2_II_Rt': 'p2 II Drt', 'osteo_p2_III_Lt': 'p2 III Gch', 'osteo_p2_III_Rt': 'p2 III Drt', 'osteo_p2_IV_Lt': 'p2 IV Gch', 'osteo_p2_IV_Rt': 'p2 IV Drt', 'osteo_p2_V_Lt': 'p2 V Gch', 'osteo_p2_V_Rt': 'p2 V Drt', 'osteoCalcaneum_Lt': 'Calcanéum Gch', 'osteoCalcaneum_Rt': 'Calcanéum Drt', 'osteoCuboide_Lt': 'Cuboïde Gch', 'osteoCuboide_Rt': 'Cuboïde Drt', 'osteoCuneiforme_I_Lt': 'Cunéïforme I Gch', 'osteoCuneiforme_I_Rt': 'Cunéïforme I Drt', 'osteoCuneiforme_II_Lt': 'Cunéïforme II Gch', 'osteoCuneiforme_II_Rt': 'Cunéïforme II Drt', 'osteoCuneiforme_III_Lt': 'Cunéïforme III Gch', 'osteoCuneiforme_III_Rt': 'Cunéïforme III Drt', 'osteoMetatarse_I_Lt': 'Métatarse I Gch', 'osteoMetatarse_I_Rt': 'Métatarse I Drt', 'osteoMetatarse_II_Lt': 'Métatarse II Gch', 'osteoMetatarse_II_Rt': 'Métatarse II Drt', 'osteoMetatarse_III_Lt': 'Métatarse III Gch', 'osteoMetatarse_III_Rt': 'Métatarse III Drt', 'osteoMetatarse_IV_Lt': 'Métatarse IV Gch', 'osteoMetatarse_IV_Rt': 'Métatarse IV Drt', 'osteoMetatarse_V_Lt': 'Métatarse V Gch', 'osteoMetatarse_V_Rt': 'Métatarse V Drt', 'osteoNaviculaire_Lt': 'Naviculaire Gch', 'osteoNaviculaire_Rt': 'Naviculaire Drt'} %}
+
+{% set articulations={'osteoAcromio_claviculaire_Lt': 'Acromio-claviculaire Gch', 'osteoAcromio_claviculaire_Rt': 'Acromio-claviculaire Drt', 'osteoATM_Lt': 'ATM Gch', 'osteoATM_Rt': 'ATM Drt', 'osteoFemoro_acetabulaire_Lt': 'Fémoro-acétabulaire Gch', 'osteoFemoro_acetabulaire_Rt': 'Fémoro-acétabulaire Drt', 'osteoGleno_humerale_Lt': 'Gléno-humérale Gch', 'osteoGleno_humerale_Rt': 'Gléno-humérale Drt', 'osteoMetatarso_phalangienne_Lt': 'Métatarso-phalangienne Gch', 'osteoMetatarso_phalangienne_Rt': 'Métatarso-phalangienne Drt', 'osteoSterno_claviculaire_Lt': 'Sterno-claviculaire Gch', 'osteoSterno_claviculaire_Rt': 'Sterno-claviculaire Drt', 'osteoStyloide_radiale_Lt': 'Styloïde radiale Gch', 'osteoStyloide_radiale_Rt': 'Styloïde radiale Drt', 'osteoSymphyse': 'Symphyse', 'osteoTete_radiale_Lt': 'Tête radiale Gch', 'osteoTete_radiale_Rt': 'Tête radiale Drt', 'osteoTibio_fibulaire_distale_Lt': 'Tibio-fibulaire distale Gch', 'osteoTibio_fibulaire_distale_Rt': 'Tibio-fibulaire distale Drt', 'osteoTibio_fibulaire_prox_Lt': 'Tibio-fibulaire prox Gch', 'osteoTibio_fibulaire_prox_Rt': 'Tibio-fibulaire prox Drt', 'osteoUlna_distal_Lt': 'Ulna distal Gch', 'osteoUlna_distal_Rt': 'Ulna distal Drt', 'osteoUlna_proximal_Lt': 'Ulna proximal Gch', 'osteoUlna_proximal_Rt': 'Ulna proximal Drt'} %}
+
+
+{% set sZones = [] %}
+{% set sMains = [] %}
+{% set sPieds = [] %}
+{% set sArticulations = [] %}
+{% set sTraitements = [] %}
+{% for k,v in tag %}
+  {% if k in zones_v1|keys and v == 'true' %}
+    {% set sZones = sZones|merge(["#{zones_v1[k]}"]) %}
+  {% elseif k in zones_v2|keys and v == 'true' %}
+    {% set sZones = sZones|merge(["#{zones_v2[k]}"]) %}
+  {% elseif k in zones_v2|keys and v != '' %}
+    {% set sZones = sZones|merge(["#{zones_v2[k]} : #{v}"]) %}
+  {% elseif k in mains|keys and v == 'true' %}
+    {% set sMains = sMains|merge(["#{mains[k]}"]) %}
+  {% elseif k in pieds|keys and v == 'true' %}
+    {% set sPieds = sPieds|merge(["#{pieds[k]}"]) %}
+  {% elseif k in articulations|keys and v == 'true' %}
+    {% set sArticulations = sArticulations|merge(["#{articulations[k]}"]) %}
+  {% elseif k in articulations|keys and v != '' %}
+    {% set sArticulations = sArticulations|merge(["#{articulations[k]}: #{v}"]) %}
+  {% endif %}
+{% endfor %}
+
+{% if sZones|length > 0 or sMains|length > 0 or sPieds|length > 0 or sArticulations|length > 0 %}
+  <h4>Zones des dysfonctions ostéopathiques</h4>
+  {% if sZones|length > 0 %}
+    {% for v in sZones %}
+      {{ v }}<br>
+    {% endfor %}
+  {% endif %}
+  {% if sMains|length > 0 %}
+    <strong>Mains:</strong><br>
+    {% for v in sMains %}
+      {{ v }}<br>
+    {% endfor %}
+  {% endif %}
+  {% if sPieds|length > 0 %}
+    <strong>Pieds:</strong><br>
+    {% for v in sPieds %}
+      {{ v }}<br>
+    {% endfor %}
+  {% endif %}
+  {% if sArticulations|length > 0 %}
+    <strong>Articulations:</strong><br>
+    {% for v in sArticulations %}
+      {{ v }}<br>
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
+{% if tag.osteoDiagnostic != '' %}
+  <h3>Diagnostic Ostéopathique</h3>
+  <p>{{ tag.osteoDiagnostic }}</p>
+{% endif %}
+
+
+{% if tag.osteoTraitement != '' %}
+  <h3>Traitement</h3>
+  <p>{{ tag.osteoTraitement }}</p>
+{% endif %}
+
+
+{% if tag.osteoNotes != '' %}
+  <h4>Notes de traitement</h4>
+  <p>{{ tag.osteoNotes }}</p>
+{% endif %}

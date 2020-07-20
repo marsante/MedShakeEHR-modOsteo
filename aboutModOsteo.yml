@@ -1,0 +1,8 @@
+nom: 'Ostéopathie'
+auteurs:
+  'Michaël Val': 'https://github.com/marsante'
+  'fr33z00': 'https://github.com/fr33z00'
+licence: 'GPL v3'
+description: 'Module MedShakeEHR pour la pratique de l'Ostéopathie'
+documentation: 'https://www.logiciel-cabinet-medical.fr/discipline//'
+sources: 'https://github.com/MedShake/MedShakeEHR-modOsteo'
