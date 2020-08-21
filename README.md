@@ -1,6 +1,6 @@
 Projet en cours de développement à ne pas utiliser en production.
 
-Plus d'infos sur le module sur [www.brunoy-osteopathe.fr/blog](www.brunoy-osteopathe.fr/blog)
+Plus d'infos sur le module sur [www.brunoy-osteopathe.fr/blog](https://www.brunoy-osteopathe.fr/blog)
 
 N'hésitez pas à me faire part de vos remarques.
 
@@ -8,7 +8,6 @@ Fork du module Chiro, merci à fr33z00 pour son travail.
 
 Ce qu'il reste à faire :
 
-- Modèle de documents et note d'honoraires
 - Canva pour schématiser son patient.
 
 # MedShakeEHR-modOsteo
