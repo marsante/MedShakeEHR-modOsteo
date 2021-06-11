@@ -96,11 +96,11 @@
             <div id="header">
                 <div class="t8" style="display : inline-block; width : 65%;vertical-align : bottom;">
                     <span class="gras" style="font-size : 16pt;">{{ tag.AuteurInitial_identiteUsuelleTitre	}}</span><br>
-                    {{tag.AuteurInitial_job}}<br><br>
+                    <span style="font-size : 14pt;">{{tag.AuteurInitial_job}}</span><br><br>
                     {{ tag.AuteurInitial_adresseProLigne1 }}<br>
                     {{ tag.AuteurInitial_adresseProLigne2 }}<br>
                     Consultations sur RDV : {{ tag.AuteurInitial_telPro }}<br>
-					contact@brunoy-osteopathe.fr<br>
+					          {{tag.profesionnalEmail}}<br>
                     N°ADELI : {{ tag.AuteurInitial_adeli }}
                 </div>
 
@@ -108,9 +108,6 @@
                     En cas d’urgence, composez le 15
                 </div>
             </div>
-                <div id="footer">
-                    <p><br>Membre d’une AGA, règlement par espèces et chèque accepté.</p>
-                </div>
 
                 <!-- stop head -->
                 <div class="t9">
