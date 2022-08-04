@@ -37,4 +37,4 @@ $lastDiagnostic=msSQL::sqlUniqueChamp("SELECT od.value FROM data_types AS dt LEF
       WHERE dt.name='osteoDiagnostic' and od.toID='".$_POST['patientID']."'
       ORDER BY od.updateDate DESC limit 1");
 
-$form->setPrevaluesAfterwards($p['page']['form'], array('osteoDiagnostic'=>$lastDiagnostic));
+$form->setPrevaluesAfterwards($p['page']['form'], ['osteoDiagnostic'=>$lastDiagnostic]);

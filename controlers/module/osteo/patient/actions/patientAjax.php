@@ -30,10 +30,12 @@
 
 $m=$match['params']['m'];
 
-$acceptedModes=array(
-    'extractCsForm', // Extraire des données additionnelles de cs
-    'refreshLatColPatientAtcdData', //rafraichir la colonne atcd
-);
+$acceptedModes=[
+    'extractCsForm',
+    // Extraire des données additionnelles de cs
+    'refreshLatColPatientAtcdData',
+    //rafraichir la colonne atcd
+];
 
 //inclusion
 if(is_file($p['homepath'].'controlers/module/osteo/patient/actions/inc-ajax-'.$m.'.php')) {

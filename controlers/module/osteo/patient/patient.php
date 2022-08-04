@@ -41,4 +41,4 @@ $p['page']['formData_baseSynthese']=$form_baseSynthese->getForm();
 $p['page']['formJavascript']['baseSynthese']=$form_baseSynthese->getFormJavascript();
 
 $typeCs_csOsteo = new msData;
-$p['page']['typeCs_csOsteo']=$typeCs_csOsteo->getDataTypesFromCatName('csOsteo', array('id','label', 'formValues'));
+$p['page']['typeCs_csOsteo']=$typeCs_csOsteo->getDataTypesFromCatName('csOsteo', ['id', 'label', 'formValues']);
