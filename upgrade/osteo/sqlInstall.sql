@@ -10,8 +10,8 @@ INSERT IGNORE INTO `actes_base` (`code`, `activite`, `phase`, `codeProf`, `label
 -- actes
 SET @catID = (SELECT actes_cat.id FROM actes_cat WHERE actes_cat.name='osteoCatConsult');
 INSERT IGNORE INTO `actes` (`cat`, `label`, `shortLabel`, `details`, `flagImportant`, `flagCmu`, `fromID`, `toID`, `creationDate`, `active`) VALUES
-(@catID, 'Consultation ostéopathique', 'Cs', 'CsOsteo: ~\n  pourcents: 100\n  depassement: 0\n...\n', '1', '0', 1, '0', '2019-01-01 00:00:00', 'oui'),
-(@catID, 'Consultation ostéopathique à Domicile', 'CsDom', 'CsOsteo: ~\n  pourcents: 100\n  depassement: 10\n...\n', '1', '0', 1, '0', '2019-01-01 00:00:00', 'oui');
+(@catID, 'Consultation ostéopathique', 'Cs', '---\nCsOsteo:\n  pourcents: 100\n  depassement: 0\n...\n', '1', '0', 1, '0', '2019-01-01 00:00:00', 'oui'),
+(@catID, 'Consultation ostéopathique à Domicile', 'CsDom', '---\nCsOsteo: \n  pourcents: 100\n  depassement: 10\n...\n', '1', '0', 1, '0', '2019-01-01 00:00:00', 'oui');
 
 -- configuration 
 INSERT IGNORE INTO `configuration` (`name`, `level`, `toID`, `module`, `cat`, `type`, `description`, `value`) VALUES
