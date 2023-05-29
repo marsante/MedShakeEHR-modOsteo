@@ -27,14 +27,14 @@
  * @contrib Michaël Val
  */
 
-if ($_POST['mode'] != 'create') {
+ if ($_POST['mode'] != 'create') {
     return;
 }
-if(!is_numeric($_POST['patientID'])) die;
+if (!is_numeric($_POST['patientID'])) die;
 
-$lastDiagnostic=msSQL::sqlUniqueChamp("SELECT od.value FROM data_types AS dt LEFT JOIN objets_data AS od
+$lastDiagnostic = msSQL::sqlUniqueChamp("SELECT od.value FROM data_types AS dt LEFT JOIN objets_data AS od
       ON od.typeID=dt.id and od.deleted='' and od.outdated='' and od.value!=''
-      WHERE dt.name='osteoDiagnostic' and od.toID='".$_POST['patientID']."'
-      ORDER BY od.updateDate DESC limit 1");
+      WHERE dt.name='chiroDiagnostic' and od.toID = :patientID
+      ORDER BY od.updateDate DESC limit 1", ['patientID' => $_POST['patientID']]);
 
-$form->setPrevaluesAfterwards($p['page']['form'], array('osteoDiagnostic'=>$lastDiagnostic));
+$form->setPrevaluesAfterwards($p['page']['form'], array('chiroDiagnostic' => $lastDiagnostic));
