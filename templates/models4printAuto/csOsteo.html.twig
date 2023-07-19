@@ -43,9 +43,14 @@
   <p>{{ tag.osteoAnamnese }}</p>
 {% endif %}
 
+{% if tag.osteoObservation != '' %}
+  <h3>Tests</h3>
+  <p>{{ tag.osteoObservation }}</p>
+{% endif %}
+
 {% if tag.osteoTests != '' %}
   <h3>Tests</h3>
-  <p>{{ tag.osteoEvolSym }}</p>
+  <p>{{ tag.osteoTests }}</p>
 {% endif %}
 
 
@@ -64,7 +69,6 @@
 {% set sMains = [] %}
 {% set sPieds = [] %}
 {% set sArticulations = [] %}
-{% set sTraitements = [] %}
 {% for k,v in tag %}
   {% if k in zones_v1|keys and v == 'true' %}
     {% set sZones = sZones|merge(["#{zones_v1[k]}"]) %}
