@@ -21,7 +21,11 @@ Module Ostéopathie pour MedShakeEHR
 ## Utilisation
 Ce module doit être utilisé conjointement à MedShakeERH-base (v3.1.0 ou supérieure).
 
-Pour utiliser les modèles de document vous pouvez vous rendre dans Configuration > Paramètres Globaux > Modèles de documents et modifier la ligne `/opt/ehr/templates/models4print/` par `/opt/ehr/templates/models4printAuto/`
+Pour utiliser les modèles de document vous pouvez vous rendre dans `Configuration > Paramètres Globaux > Modèles de documents` et modifiez les lignes : 
+- templateCourrierHeadAndFoot : `osteo-page-headAndNoFoot.html.twig`
+- templateCrHeadAndFoot : `osteo-page-headAndNoFoot.html.twig`
+- templateDefautPage : `osteo-page-headAndFoot.html.twig`
+- templateInvoiceBody : `osteo-facture.html.twig`
 
 **Pour des informations complètes sur MedShakeEHR, son installation, son fonctionnement, ses différents modules ... consultez [le site MedShakeEHR](https://www.medshake.app/) !**
 latest

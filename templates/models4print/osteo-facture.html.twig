@@ -25,28 +25,30 @@
  # @author Michaël Val
  #}
 
- {% set tag = page.courrier %}
+{% set tag = page.courrier %}
 
-<p style="text-align : right;">{{ tag.UtilisateurActif_villeAdressePro }}, le {{ tag.date|date("d/m/Y") }}
+<p style="text-align: right;">
+    {{ tag.UtilisateurActif_villeAdressePro }}, le {{ tag.date|date("d/m/Y") }}
+    <br><br>
+    A l'attention de :
+    <br><br>
+    {{ tag.identiteCompleteTitreLong }}
+    <br>{{ tag.adressePersoLigne1 }}
+    <br>{{ tag.adressePersoLigne2 }}
+    <br>N° mutuelle : {{ tag.nmu }}
+</p>
 <br><br>
-A l'attention de : 
-<br><br>
-{{ tag.identiteCompleteTitreLong }}
-<br>{{ tag.adressePersoLigne1 }}
-<br>{{ tag.adressePersoLigne2 }}
-<br>N° mutuelle : {{ tag.nmu }}</p>
+
+<h2 style="text-align: center">Note d'Honoraires Acquittée</h2>
+<p style="text-align: center">Note d'honoraires n° : {{ tag.factureNumero }}</p>
 <br><br>
 
- <h2 style="text-align : center">Note d'Honoraires Acquittée</h2>
- <p style="text-align : center">Note d'honoraires n° : {{ tag.factureNumero }}</p>
- <br><br>
- 
- 
- 
- 
- <p>Montant de l'acte ostéopathique : {{ tag.regleFacture }}€ <br><br>
+<p>
+    Montant de l'acte ostéopathique : {{ tag.regleFacture }}€
+    <br><br>
+</p>
+<br><br><br><br><br><br>
 
- </p>
- <br><br><br><br><br><br>
-
- <p style="text-align:right">{{ tag.UtilisateurActif_identiteUsuelleTitre	}}</p>
+<p style="text-align: right;">
+    {{ tag.UtilisateurActif_identiteUsuelleTitre }}
+</p>
