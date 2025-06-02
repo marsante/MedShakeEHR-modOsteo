@@ -31,7 +31,6 @@
 $m=$match['params']['m'];
 
 $acceptedModes=array(
-    'extractCsForm', // Extraire des données additionnelles de cs
     'refreshLatColPatientAtcdData', //rafraichir la colonne atcd
 );
 
