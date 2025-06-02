@@ -28,104 +28,150 @@
  #}
 
 <div class="row">
-  <div class="col">
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle m-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dossier
-        </button>
-
-        <ul class="dropdown-menu">
-
-          {% for v in page.typeCs_csOsteo %}
-            <li>
-              <a class="dropdown-item addNewCS" href="#" data-parentID='0' data-formtocall="{{ v.formValues }}" data-csID="{{ v.id }}" data-mode="create">{{ v.label|e }}</a>
-            </li>
-          {% endfor %}
-
-          <li class="dropdown-divider" role="dropdown-separator"></li>
-          <li>
-              <a class="dropdown-item linkAddNewDoc" href="#">Ajouter un document au dossier</a>
-          </li>
-          {% if config.dicomHost=='' %}
-            <li>
-                <a class="dropdown-item prepareReceptionDoc" href="#">Ajouter des documents au dossier via phonecapture</a>
-            </li>
-          {% endif %}
-        </ul>
-    </div>
-
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle m-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Courriers
-        </button>
-        <ul class="dropdown-menu">
-            <li class="dropdown-header">Certificats</li>
-            {% for v in page.modelesCertif %}
-                <li>
-                    <a class="dropdown-item newCourrier" data-modele="{{ v.name }}" href="#">{{ v.label }}</a>
-                </li>
-            {% endfor %}
-            <li role="separator" class="dropdown-divider"></li>
-            <li class="dropdown-header">Courriers</li>
-            {% for v in page.modelesCourrier %}
-                <li>
-                    <a class="dropdown-item newCourrier" data-modele="{{ v.name }}" href="#">{{ v.label }}</a>
-                </li>
-            {% endfor %}
-            {% if page.modelesDocASigner|length > 0 %}
-              <li role="separator" class="dropdown-divider"></li>
-              <li class="dropdown-header">Documents à signer</li>
-              {% for v in page.modelesDocASigner %}
-                  <li>
-                      <a class="dropdown-item newCourrier" data-modele="{{ v.name }}" href="#">{{ v.label }}</a>
-                  </li>
-              {% endfor %}
-            {% endif %}
-        </ul>
-    </div>
+  <div class="col d-flex align-items-start flex-wrap">
+    {% for v in page.typeCs_csOsteo %}
+      <a class="btn btn-danger m-1 addNewCS"
+         href="#"
+         data-parentID='0'
+         data-formtocall="{{ v.formValues }}"
+         data-csID="{{ v.id }}"
+         data-mode="create">
+        {{ v.label|e }}
+      </a>
+    {% endfor %}
 
     {% if page.formReglement|length > 1 %}
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle m-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% if config.administratifPeutAvoirRecettes != 'true' %}disabled{% endif %}>
-            Règlements
+      <div class="btn-group m-1">
+        <button type="button"
+                class="btn btn-success dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                {% if config.administratifPeutAvoirRecettes != 'true' %}disabled{% endif %}>
+          Règlement
         </button>
         <ul class="dropdown-menu">
-          <li>
           {% for v in page.formReglement %}
             <li>
-              <a class="dropdown-itemaddNewReglement" title="{{ v.description }}" data-porteur="{{ v.id }}" data-module="{{ v.module }}" data-reglementForm="{{ v.formValues }}" href="#">{{ v.label }}</a>
+              <a class="dropdown-item addNewReglement"
+                 title="{{ v.description }}"
+                 data-porteur="{{ v.id }}"
+                 data-module="{{ v.module }}"
+                 data-reglementForm="{{ v.formValues }}"
+                 href="#">
+                {{ v.label }}
+              </a>
             </li>
           {% endfor %}
         </ul>
       </div>
     {% else %}
-      <a class="addNewReglement btn btn-primary m-1" type="button" {% if config.administratifPeutAvoirRecettes != 'true' %}disabled{% endif %} title="{{ page.formReglement[0]['description'] }}" data-porteur="{{ page.formReglement[0]['id'] }}" data-module="{{ page.formReglement[0]['module'] }}" data-reglementForm="{{ page.formReglement[0]['formValues'] }}" href="#">{{ page.formReglement[0]['label'] }}</a>
+      <a class="addNewReglement btn btn-success m-1"
+         type="button"
+         {% if config.administratifPeutAvoirRecettes != 'true' %}disabled{% endif %}
+         title="{{ page.formReglement[0]['description'] }}"
+         data-porteur="{{ page.formReglement[0]['id'] }}"
+         data-module="{{ page.formReglement[0]['module'] }}"
+         data-reglementForm="{{ page.formReglement[0]['formValues'] }}"
+         href="#">
+        Règlement
+      </a>
     {% endif %}
+
+    <div class="btn-group">
+      <button type="button"
+              class="btn btn-primary dropdown-toggle m-1"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              title="Courriers & Certificats">
+        <i class="fa fa-file-signature"></i>
+        <span class="sr-only">Courriers</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-header"><i class="fa fa-envelope"></i> Courriers</li>
+        {% for v in page.modelesCourrier %}
+          <li>
+            <a class="dropdown-item newCourrier"
+               data-modele="{{ v.name }}"
+               href="#">{{ v.label }}</a>
+          </li>
+        {% endfor %}
+        <li role="separator" class="dropdown-divider"></li>
+        <li class="dropdown-header"><i class="fa fa-certificate"></i> Certificats</li>
+        {% for v in page.modelesCertif %}
+          <li>
+            <a class="dropdown-item newCourrier"
+               data-modele="{{ v.name }}"
+               href="#">{{ v.label }}</a>
+          </li>
+        {% endfor %}
+        {% if page.modelesDocASigner|length > 0 %}
+          <li role="separator" class="dropdown-divider"></li>
+          <li class="dropdown-header"><i class="fa fa-pen"></i> Documents à signer</li>
+          {% for v in page.modelesDocASigner %}
+            <li>
+              <a class="dropdown-item newCourrier"
+                 data-modele="{{ v.name }}"
+                 href="#">{{ v.label }}</a>
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="btn-group mx-3">
+      <button type="button"
+              class="btn btn-info dropdown-toggle m-1"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              title="Glisser un document dans le dossier">
+        <i class="fa fa-file-download"></i>
+        <span class="sr-only">Documents</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item linkAddNewDoc" href="#">Glisser un document dans le dossier</a>
+        </li>
+        {% if config.dicomHost=='' %}
+          <li>
+            <a class="dropdown-item prepareReceptionDoc" href="#">Ajouter un document au dossier via phonecapture</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
 
     {% if config.dicomHost!='' %}
       <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle m-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              DICOM
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-                <a href="#" class="dropdown-item catchLastDicomSrData">Récupérer dernières mesures</a>
-            </li>
-            <li>
-                <a href="#" class="dropdown-item catchOthersDicomSrData">Récupérer mesures antérieures</a>
-            </li>
-            <li role="separator" class="dropdown-divider"></li>
-            <li>
-                <a class="dropdown-item" href="{{ config.protocol }}{{ config.host }}{{ config.urlHostSuffixe }}/dicom/{{ page.patient.id }}/" target="_blank">Voir tous les examens du patient</a>
-            </li>
-            <li role="separator" class="dropdown-divider"></li>
-            <li>
-                <a href="#" class="dropdown-item prepareEcho">Envoyer patient à échographe</a>
-            </li>
-            <li>
-                <a href="#" class="dropdown-item prepareReceptionDoc dicom">Envoyer patient à phonecapture</a>
-            </li>
-          </ul>
+        <button type="button"
+                class="btn btn-primary dropdown-toggle m-1"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+          DICOM
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#" class="dropdown-item catchLastDicomSrData">Récupérer dernières mesures</a>
+          </li>
+          <li>
+            <a href="#" class="dropdown-item catchOthersDicomSrData">Récupérer mesures antérieures</a>
+          </li>
+          <li role="separator" class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item"
+               href="{{ config.protocol }}{{ config.host }}{{ config.urlHostSuffixe }}/dicom/{{ page.patient.id }}/"
+               target="_blank">Voir tous les examens du patient</a>
+          </li>
+          <li role="separator" class="dropdown-divider"></li>
+          <li>
+            <a href="#" class="dropdown-item prepareEcho">Envoyer patient à échographe</a>
+          </li>
+          <li>
+            <a href="#" class="dropdown-item prepareReceptionDoc dicom">Envoyer patient à phonecapture</a>
+          </li>
+        </ul>
       </div>
     {% endif %}
   </div>

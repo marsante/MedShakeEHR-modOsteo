@@ -1,5 +1,5 @@
 default:
-	rm -f MedShakeEHR-modOsteo.zip SHA256SUMS
+	rm -f MedShakeEHR-modOsteo.zip
 	git ls-files | grep -v '^Makefile$$' > filelist.txt	
 	zip -@ MedShakeEHR-modOsteo.zip < filelist.txt
 	rm -f filelist.txt	
