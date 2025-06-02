@@ -1,9 +1,20 @@
 default:
 	rm -f MedShakeEHR-modOsteo.zip SHA256SUMS
-	zip -r MedShakeEHR-modOsteo.zip . -x .git\* -x Makefile
-	sha256sum -b MedShakeEHR-modOsteo.zip > preSHA256SUMS
-	head -c 64 preSHA256SUMS > SHA256SUMS
-	rm -f preSHA256SUMS
+	git ls-files | grep -v '^Makefile$$' > filelist.txt	
+	zip -@ MedShakeEHR-modOsteo.zip < filelist.txt
+	rm -f filelist.txt	
 
 clean:
 	rm -f MedShakeEHR-modOsteo.zip
+
+
+sha256:
+	git ls-files > filelist.txt	
+	zip -@ MedShakeEHR-modOsteo.zip < filelist.txt
+	tar -czf MedShakeEHR-modOsteo.tar.gz -T filelist.txt
+	rm -f filelist.txt
+	sha256sum MedShakeEHR-modOsteo.zip > SHA256SUMS
+	sha256sum MedShakeEHR-modOsteo.tar.gz >> SHA256SUMS
+	@echo "SHA256 (MedShakeEHR-modOsteo.zip): $$(sha256sum MedShakeEHR-modOsteo.zip | cut -d' ' -f1)"
+	@echo "SHA256 (MedShakeEHR-modOsteo.tar.gz): $$(sha256sum MedShakeEHR-modOsteo.tar.gz | cut -d' ' -f1)"
+	rm -f MedShakeEHR-modOsteo.zip MedShakeEHR-modOsteo.tar.gz 

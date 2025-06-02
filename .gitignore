@@ -13,5 +13,6 @@
 !.vscode/extensions.json
 *.code-workspace
 .history
+*tar.gz
 
 
