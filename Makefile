@@ -1,8 +1,5 @@
 default:
-	rm -f MedShakeEHR-modOsteo.zip
-	git ls-files | grep -v '^Makefile$$' > filelist.txt	
-	zip -@ MedShakeEHR-modOsteo.zip < filelist.txt
-	rm -f filelist.txt	
+	zip -r MedShakeEHR-modOsteo.zip . -x Makefile -x \git*
 
 clean:
 	rm -f MedShakeEHR-modOsteo.zip
