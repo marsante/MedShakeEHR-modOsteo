@@ -4,5 +4,5 @@ auteurs:
   "fr33z00": "https://github.com/fr33z00"
 licence: "GPL v3"
 description: "Module MedShakeEHR pour la pratique de l'Ostéopathie"
-documentation: "https://www.medshake.app/discipline//"
-sources: "https://github.com/MedShake/MedShakeEHR-modOsteo"
+documentation: "https://docs.brunoy-osteopathe.fr/medshakeehr/guides/configurer-le-module-osteo/#installez-le-module"
+sources: "https://github.com/Marsante/MedShakeEHR-modOsteo"

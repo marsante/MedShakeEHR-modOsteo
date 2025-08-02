@@ -5,13 +5,13 @@
 
 [latest-link]: https://github.com/marsante/MedShakeEHR-modOsteo/releases/latest
 
-Plus d'infos sur le module sur [www.brunoy-osteopathe.fr/blog](https://www.brunoy-osteopathe.fr/blog)
+Plus d’infos sur le module sur [www.brunoy-osteopathe.fr/blog](https://www.brunoy-osteopathe.fr/blog)
 
-N'hésitez pas à me faire part de vos remarques.
+N’hésitez pas à me faire part de vos remarques.
 
 Fork du module Chiro, merci à fr33z00 pour son travail.
 
-Ce qu'il reste à faire :
+Ce qu’il reste à faire :
 
 - Canva pour schématiser son patient.
 
@@ -27,5 +27,4 @@ Pour utiliser les modèles de document vous pouvez vous rendre dans `Configurati
 - templateDefautPage : `osteo-page-headAndFoot.html.twig`
 - templateInvoiceBody : `osteo-facture.html.twig`
 
-**Pour des informations complètes sur MedShakeEHR, son installation, son fonctionnement, ses différents modules ... consultez [le site MedShakeEHR](https://www.medshake.app/) !**
-latest
+**Pour des informations complètes sur MedShakeEHR, son installation, son fonctionnement, ses différents modules … consultez [le site MedShakeEHR](https://www.medshake.app/) !**
