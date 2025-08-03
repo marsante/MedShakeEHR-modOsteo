@@ -258,7 +258,7 @@ INSERT IGNORE INTO `data_types` (`groupe`, `name`, `placeholder`, `label`, `desc
 
 -- configuration 
 INSERT IGNORE INTO `configuration` (`name`, `level`, `toID`, `module`, `cat`, `type`, `description`, `value`) VALUES
-('administratifSecteurHonoraires', 'module', 0, 'osteo', NULL, NULL, NULL, NULL),
+('administratifSecteurHonoraires', 'module', 0, 'osteo', 'Règlements', NULL, NULL, NULL),
 ('administratifReglementFormulaires', 'module', 0, 'osteo', 'Règlements', 'liste', NULL, 'osteoReglePorteur');
 
 -- forms_cat
@@ -281,4 +281,4 @@ INSERT IGNORE INTO `forms` (`module`, `internalName`, `name`, `description`, `da
 
 -- system
 INSERT IGNORE INTO `system` (`name`, `groupe`, `value`) VALUES
-('osteo', 'module', 'v1.2.1');
+('osteo', 'module', 'v1.2.2');
